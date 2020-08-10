@@ -2,24 +2,26 @@ from selenium import webdriver
 from time import sleep
 import random
 from pyfiglet import Figlet
-from termcolor import colored
-from colorama import Fore, Back, Style
+####from termcolor import colored
+##from colorama import Fore, Back, Style
 custom_fig = Figlet(font='graffiti')
 print(custom_fig.renderText('SomalPY'))
-print("By 0k3y ")
+print("By 0k3y and moderpo")
 print (" ")
 
-print(Fore.RED + 'some red text') 
+##print(Fore.RED + 'some red text') 
 
 size = 1
-
+#you can change the default language here:
+language = ("en")
 
 print("Browser = OFF")
 print(" COMMANDS ")
 print("start = start the script")
 print("on = the browser will be displayed")
 print("off = the browser will run in background")
-print("tags = to define keywords (the result will be displayed here")
+print("tags = define keywords (the result will be displayed here")
+print("lang = change language")
 print(" ")
 
 tags = 0
@@ -30,16 +32,21 @@ while True:
     cmd = input("Type: ")
     if cmd == "on":
         size = 1
-        print ("Setting changed to on")
+        print ("Browser visible")
     if cmd == "off":
         size = 2
-        print ("Setting changed to off")
+        print ("Browser minimized")
     if cmd == "tags":
-        print ("Please type your tags. Seperate them with an , ")
+        print ("Please type your tags. Seperate them with a "," ")
         tagsraw = input("Type: ")
         tags = [tagsraw]
         tagstr = str(tags)
         print (tagstr + " have been added to tags")
+    if cmd == "lang":
+        print ("Please type your language (ex.: en)")
+        language = input("Type: ")
+        print ("the language is set to " +language)
+        
     if cmd == "start":
         print ("Started successfully")
         driver = webdriver.Firefox()
@@ -47,7 +54,7 @@ while True:
             driver.maximize_window()
         if size == 2:
             driver.minimize_window()
-        driver.get("https://translate.google.com/?hl=de#view=home&op=translate&sl=so&tl=de&text=")
+        driver.get("https://translate.google.com/?hl=de#view=home&op=translate&sl=so&tl=" + language)
         sleep(7)
         while True:
             n = random.randint(1,4)
@@ -64,10 +71,11 @@ while True:
                     print ("TAG FOUND!")
                     print (output)
                     print (inpute)
+                    #driver.takesscreenshot
                     
                 elif "kekeke ke" in output:
-                    driver.get("https://translate.google.com/?hl=de#view=home&op=translate&sl=so&tl=de&text=")
-                elif "...." in output:
-                    driver.get("https://translate.google.com/?hl=de#view=home&op=translate&sl=so&tl=de&text=")
+                    driver.get("https://translate.google.com/?hl=de#view=home&op=translate&sl=so&tl=" + language)
+               # elif "...." in output:
+               #     driver.get("https://translate.google.com/?hl=de#view=home&op=translate&sl=so&tl=" + language)
             driver.find_element_by_xpath(
                 '//*[@id="source"]').send_keys(" ")
