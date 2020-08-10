@@ -8,3 +8,7 @@ First open the setup.bat, then open the Somalpy.py.
 REQUIREMENTS
 
 Python 3.6+
+
+Firefox
+
+Windows 23 bit or 64 bit
